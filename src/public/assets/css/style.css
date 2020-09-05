@@ -1,0 +1,226 @@
+/* General setup */
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+
+body {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* typography */
+
+h1,
+h2,
+h3 {
+  color: #2a2a2a;
+}
+
+p,
+input,
+li {
+  color: #2a2a2a;
+}
+
+h1 {
+  font-size: 2.8rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.4rem;
+  /* text-align: center; */
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+p,
+li {
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+/* header layout */
+
+nav,
+article,
+aside,
+footer {
+  background-color: white;
+  padding: 1%;
+}
+
+nav {
+  height: 50px;
+  background-color: #aaa;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+nav ul {
+  padding: 0;
+  list-style-type: none;
+  flex: 2;
+  display: flex;
+}
+
+nav li {
+  display: inline;
+  text-align: center;
+  flex: 1;
+}
+
+nav a {
+  display: inline-block;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+  white-space: nowrap;
+}
+
+nav form {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 2em;
+}
+
+input {
+  font-size: 1.6rem;
+  height: 32px;
+}
+
+input[type='search'] {
+  flex: 3;
+}
+
+input[type='submit'] {
+  flex: 1;
+  margin-left: 1rem;
+  background: #333;
+  border: 0;
+  color: white;
+}
+
+/* main layout */
+
+#container {
+  min-height: 100vh;
+  position: relative;
+}
+
+main {
+  /* display: flex; */
+  padding-bottom: 31vmin;
+}
+
+.container-home {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px;
+  width: 100%;
+}
+
+.arab {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  flex: 1 0 46%;
+  margin: 10px;
+}
+
+.arab label {
+  margin-bottom: 5px;
+}
+
+.arab textarea {
+  height: 100%;
+  width: 100%;
+  text-align: right;
+  overflow-y: auto;
+}
+
+.braille {
+  flex: 1 0 46%;
+  order: 2;
+  margin: 10px;
+  max-width: 100%;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  flex-basis: 100%;
+  order: 3;
+}
+
+.button input {
+  align-self: center;
+  background-color: skyblue;
+  color: white;
+}
+
+.bugs-form {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.bugs-form label,
+input {
+  display: inline-block;
+  margin: 5px;
+}
+
+.bugs-form label {
+  width: 15%;
+  text-align: right;
+  padding-right: 3em;
+}
+article {
+  flex: 4;
+}
+/*
+aside {
+  flex: 1;
+  margin-left: 10px;
+  background-color: #aaa;
+}
+
+aside li {
+  padding-bottom: 10px;
+}
+*/
+footer {
+  height: 21vmin;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  background-color: skyblue;
+  color: white;
+  text-align: right;
+}
+
+@media only screen and (max-width: 480px) {
+  .container-home {
+    display: block;
+    height: 50vh;
+  }
+  .arab textarea {
+    width: 100%;
+  }
+}

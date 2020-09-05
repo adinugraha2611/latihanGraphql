@@ -1,0 +1,20 @@
+// mongo notes
+nama database adalah nama projject, ex: perpustakaan
+collection adalah nama object apa aja yang ada di dalamnya, ex: buku, penulis, users
+kalau divisualisasikan ke javascript:
+// buku adalah nama collection
+const buku = {
+    //bukuA dan bukuB adalah documents
+    bukuA : {};
+    bukuB : {}
+}
+// add and select new database
+use namaDatabase
+
+// add collection and its documents
+db.pizza.save({ type: "Cheese" })
+db.pizza.insert([{type: "Veggie"}, {type: "Olive"}])
+db.books.save([{type: "sang peminmpi"}, {type: "edensor"}])
+db.pizza.update({type: "veggie"}, {type: "mushroom"})
+// remove all collections
+db.pizza.remove({})
