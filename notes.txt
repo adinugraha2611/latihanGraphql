@@ -18,3 +18,5 @@ db.books.save([{type: "sang peminmpi"}, {type: "edensor"}])
 db.pizza.update({type: "veggie"}, {type: "mushroom"})
 // remove all collections
 db.pizza.remove({})
+
+diubah
