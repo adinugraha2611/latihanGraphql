@@ -62,5 +62,3 @@ app.listen({ port }, () =>
   )
 );
 // console.log(models);
-// change from vscode
-// ini yang diganti
