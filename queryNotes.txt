@@ -15,7 +15,7 @@ query {
  author
  }
 }
-e
+
 // result
 {
   "errors": [
@@ -54,9 +54,14 @@ e
 }
 
 query {
-    note(id:"2") {
+    note(id:"5f563176bd8e5004c7dcc68c") {
         id
         content
         author
     }
+}
+
+// delete
+mutation {
+ deleteNote(id: "5f563176bd8e5004c7dcc68c")
 }
