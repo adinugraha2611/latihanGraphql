@@ -65,3 +65,14 @@ query {
 mutation {
  deleteNote(id: "5f563176bd8e5004c7dcc68c")
 }
+
+// update
+mutation {
+ updateNote(
+ id: "5f56332117942304dfcbd25b",
+ content: "This is an updated note!"
+ ){
+ id
+ content
+ }
+}

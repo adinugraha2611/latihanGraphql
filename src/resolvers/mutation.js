@@ -16,14 +16,17 @@ module.exports = {
   updateNote: async (parent, { content, id }, { models }) => {
     return await models.Note.findOneAndUpdate(
       {
+        // find and update note with this id
         _id: id,
       },
       {
+        // ini yang akan di update
         $set: {
-          content,
+          content: content,
         },
       },
       {
+        // this is just to show newly updated data back to us
         new: true,
       }
     );
