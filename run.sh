@@ -1,3 +1,3 @@
 #!/bin/sh
-sudo -u nugielinux service mongodb start
+sudo service mongodb start
 npm start
