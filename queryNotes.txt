@@ -12,7 +12,7 @@ query {
  notes {
  content
  id
- author
+ #author
  }
 }
 
@@ -75,4 +75,27 @@ mutation {
  id
  content
  }
+}
+
+// signup
+mutation {
+ signUp(
+ username: "nugie",
+ email: "nugie@example.com",
+ password: "NotARobot10010!"
+ )
+}
+
+// signin
+mutation {
+ signIn(
+ username: "BeeBoop",
+ email: "robot@example.com",
+ password: "NotARobot10010!"
+ )
+}
+
+// headers
+{
+  "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNThjNzc0MTQ1YTUwMDEyM2ZlZmI3ZCIsImlhdCI6MTU5OTk3NDgxNn0.q-yKFLCnA61-0q6tp7V3PqE7WEsE4k9vvpgvZnIxXlg"
 }

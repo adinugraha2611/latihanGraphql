@@ -1,0 +1,18 @@
+version: "3"
+services:
+  app:
+    container_name: docker-api
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/usr/src/app
+    links:
+      - mongo
+    env_file:
+      - dev.env
+  mongo:
+    container_name: docker-mongo
+    image: mongo
+    ports:
+      - "27017:27017"
