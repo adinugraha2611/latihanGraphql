@@ -89,7 +89,7 @@ mutation {
 // signin
 mutation {
  signIn(
- username: "BeeBoop",
+ username: "nugie",
  email: "robot@example.com",
  password: "NotARobot10010!"
  )
