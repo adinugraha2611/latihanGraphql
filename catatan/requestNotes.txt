@@ -1,58 +1,33 @@
-// mutation
+// create note
 mutation {
- newNote (content: "This is a mutant note!") {
+ newNote(content: "Check check it out!") {
  content
+ favoriteCount
  id
- author
  }
 }
 
-// query
+// favourite a note
+mutation {
+ toggleFavorite(id: "5f62db43f0aab3055835ebe2") {
+ favoriteCount
+}
+}
+
+// query note and author info
 query {
- notes {
- content
+ note(id: "5f62cd363c2ccc033818fa97") {
  id
- #author
+ content
+ # the information about the author note
+ author {
+ username
+ id
+ }
  }
 }
 
-// result
-{
-  "errors": [
-    {
-      "message": "nodeValue is not defined",
-      "locations": [
-        {
-          "line": 2,
-          "column": 3
-        }
-      ],
-      "path": [
-        "newNote"
-      ],
-      "extensions": {
-        "code": "INTERNAL_SERVER_ERROR",
-        "exception": {
-          "stacktrace": [
-            "ReferenceError: nodeValue is not defined",
-            "    at newNote (D:\\tesst\\javascript\\my notes\\latihan-graphql\\server.js:43:7)",
-            "    at field.resolve (D:\\tesst\\javascript\\my notes\\latihan-graphql\\node_modules\\graphql-extensions\\dist\\index.js:134:26)",
-            "    at field.resolve (D:\\tesst\\javascript\\my notes\\latihan-graphql\\node_modules\\apollo-server-core\\dist\\utils\\schemaInstrumentation.js:52:26)",
-            "    at resolveFieldValueOrError (D:\\tesst\\javascript\\my notes\\latihan-graphql\\node_modules\\graphql\\execution\\execute.js:467:18)",
-            "    at resolveField (D:\\tesst\\javascript\\my notes\\latihan-graphql\\node_modules\\graphql\\execution\\execute.js:434:16)",
-            "    at D:\\tesst\\javascript\\my notes\\latihan-graphql\\node_modules\\graphql\\execution\\execute.js:244:18",
-            "    at D:\\tesst\\javascript\\my notes\\latihan-graphql\\node_modules\\graphql\\jsutils\\promiseReduce.js:23:10",
-            "    at Array.reduce (<anonymous>)",
-            "    at promiseReduce (D:\\tesst\\javascript\\my notes\\latihan-graphql\\node_modules\\graphql\\jsutils\\promiseReduce.js:20:17)",
-            "    at executeFieldsSerially (D:\\tesst\\javascript\\my notes\\latihan-graphql\\node_modules\\graphql\\execution\\execute.js:241:37)"
-          ]
-        }
-      }
-    }
-  ],
-  "data": null
-}
-
+// note query
 query {
     note(id:"5f563176bd8e5004c7dcc68c") {
         id
