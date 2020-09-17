@@ -9,34 +9,61 @@ require('dotenv').config();
 const gravatar = require('gravatar');
 
 module.exports = {
-  deleteNote: async (parent, { id }, { models }) => {
+  deleteNote: async (parent, { id }, { models, user }) => {
+    // if not a user, throw an Authentication Error
+    if (!user) {
+      throw new AuthenticationError('You must be signed in to delete a note');
+    }
+    // find the note
+    const note = await models.Note.findById(id);
+    // if the note owner and current user don't match, throw a forbidden error
+    if (note && String(note.author) !== user.id) {
+      throw new ForbiddenError("You don't have permissions to delete the note");
+    }
     try {
-      await models.Note.findOneAndRemove({ _id: id });
+      // if everything checks out, remove the note
+      await note.remove();
       return true;
     } catch (err) {
+      // if there's an error along the way, return false
       return false;
     }
   },
-  newNote: async (parent, args, { models }) => {
+  // add the users context
+  newNote: async (parent, args, { models, user }) => {
+    // if there is no user on the context, throw an authentication error
+    if (!user) {
+      throw new AuthenticationError('You must be signed in to create a note');
+    }
     return await models.Note.create({
       content: args.content,
-      author: 'nugi',
+      // reference the author's mongo id
+      author: mongoose.Types.ObjectId(user.id),
     });
   },
-  updateNote: async (parent, { content, id }, { models }) => {
+  updateNote: async (parent, { content, id }, { models, user }) => {
+    // if not a user, throw an Authentication Error
+    if (!user) {
+      throw new AuthenticationError('You must be signed in to update a note');
+    }
+    // find the note
+    const note = await models.Note.findById(id);
+    // if the note owner and current user don't match, throw a forbidden error
+    if (note && String(note.author) !== user.id) {
+      throw new ForbiddenError("You don't have permissions to update the note");
+    }
+    // Update the note in the db and return the updated note
     return await models.Note.findOneAndUpdate(
       {
-        // find and update note that has this id
         _id: id,
       },
       {
-        // ini yang akan di update
         $set: {
-          content: content,
+          content,
         },
       },
       {
-        // this is just to show newly updated data back to us
+        // this just to return new result back to us
         new: true,
       }
     );

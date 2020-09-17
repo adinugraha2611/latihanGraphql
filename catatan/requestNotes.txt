@@ -95,7 +95,34 @@ mutation {
  )
 }
 
-// headers
+// authorization headers
 {
-  "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNThjNzc0MTQ1YTUwMDEyM2ZlZmI3ZCIsImlhdCI6MTU5OTk3NDgxNn0.q-yKFLCnA61-0q6tp7V3PqE7WEsE4k9vvpgvZnIxXlg"
+  "Authorization": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmNjA2YmNiZTdjOTE5MDE3ZWYzNDkyYyIsImlhdCI6MTYwMDI2MTEwOX0.xFMsNQzzqO70BImNuaqfYjql3J9qI-hezVyy9nWNoh0"
+}
+
+// username query
+query {
+ user(username:"nugie") {
+ username
+ email
+ id
+ }
+}
+
+// users query
+query {
+ users {
+ username
+ email
+ id
+ }
+}
+
+// me query
+query {
+ me {
+ username
+ email
+ id
+}
 }
