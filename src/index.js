@@ -1,4 +1,8 @@
 require('dotenv').config();
+const depthLimit = require('graphql-depth-limit');
+const { createComplexityLimitRule } = require('graphql-validation-complexity');
+const helmet = require('helmet');
+const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const db = require('./db');
 const express = require('express');
@@ -23,11 +27,12 @@ const getUser = (token) => {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
-  context: ({ req }) => {
+  validationRules: [depthLimit(5), createComplexityLimitRule(1000)],
+  context: async ({ req }) => {
     // get the user token from the headers
     const token = req.headers.authorization;
     // try to retrieve a user with the token
-    const user = getUser(token);
+    const user = await getUser(token);
     // for now, let's log the user to the console:
     console.log(user);
     // add the db models and the user to the context
@@ -42,6 +47,8 @@ const models = require('./models');
 
 // app setup
 const app = express();
+app.use(helmet());
+app.use(cors());
 // Apply the Apollo GraphQL middleware and set the path to /api
 server.applyMiddleware({ app, path: '/api' });
 
