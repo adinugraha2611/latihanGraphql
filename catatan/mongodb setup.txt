@@ -1,0 +1,12 @@
+nugieDbUser
+ORlbXQILVWW6K4eV
+
+1. side nav landmark > clusters
+2. connect button
+3. heading connect to cluster blablabla
+
+// connect using mongodb native driver
+mongodb+srv://nugieDbUser:ORlbXQILVWW6K4eV@cluster0.z8alj.mongodb.net/notedly?retryWrites=true&w=majority
+
+// connect using compass
+mongodb+srv://nugieDbUser:<password>@cluster0.z8alj.mongodb.net/test
