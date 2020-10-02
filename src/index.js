@@ -1,7 +1,7 @@
 require('dotenv').config();
 const depthLimit = require('graphql-depth-limit');
 const { createComplexityLimitRule } = require('graphql-validation-complexity');
-const helmet = require('helmet');
+// const helmet = require('helmet');
 const cors = require('cors');
 const jwt = require('jsonwebtoken');
 const db = require('./db');
@@ -47,7 +47,7 @@ const models = require('./models');
 
 // app setup
 const app = express();
-app.use(helmet());
+// app.use(helmet());
 app.use(cors());
 // Apply the Apollo GraphQL middleware and set the path to /api
 server.applyMiddleware({ app, path: '/api' });
