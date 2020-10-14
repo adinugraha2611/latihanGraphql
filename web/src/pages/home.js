@@ -34,7 +34,42 @@ const Home = () => {
   // if there is an error fetching the data, display an error message
   if (error) return <p>Error!</p>;
   // if the data is successful, display the data in our UI
-  return <NoteFeed notes={data.noteFeed.notes} />;
+  return (
+    <React.Fragment>
+      <NoteFeed notes={data.noteFeed.notes} />
+      {data.noteFeed.hasNextPage && (
+        // onClick peform a query, passing the current cursor as a variable
+        <Button
+          onClick={() =>
+            fetchMore({
+              variables: {
+                // input cursor returned from previous result to get the next 10 notes
+                cursor: data.noteFeed.cursor
+              },
+              // when fetchMore returned, updateQuery will run
+              updateQuery: (previousResult, { fetchMoreResult }) => {
+                return {
+                  noteFeed: {
+                    cursor: fetchMoreResult.noteFeed.cursor,
+                    hasNextPage: fetchMoreResult.noteFeed.hasNextPage,
+                    // combine the new results and the old
+                    notes: [
+                      ...previousResult.noteFeed.notes,
+                      ...fetchMoreResult.noteFeed.notes
+                    ],
+                    // set query name for fetchMore (use the same as previous fetch)
+                    __typename: 'noteFeed'
+                  }
+                };
+              }
+            })
+          }
+        >
+          Load more
+        </Button>
+      )}
+    </React.Fragment>
+  );
 };
 
 export default Home;
